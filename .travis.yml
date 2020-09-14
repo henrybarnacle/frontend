@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true henrybarnacle/frontend npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "frontend"
+  env: "Frontend-env-1"
+  bucket_name: "elasticbeanstalk-us-east-1-357862968165"
+  bucket_path: "frontend"
+  on:
+    branch: master
